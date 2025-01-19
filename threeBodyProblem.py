@@ -9,16 +9,17 @@ m1 = 1.0
 m2 = 1.0
 m3 = 1.0
 
-# Position
-inital_position_1 =  [10.5,  10.0,  0.0]
-inital_position_2 =  [0.2,  3.0,  2.0]
-inital_position_3 =  [8.0,   4.1, 2.0]
+#initialiserer posisjoner [x, y, z]
+inital_position_1 =  [10.5,  25.0,  0.0]
+inital_position_2 =  [0.2,  3.0,  2.0]-
+inital_position_3 =  [-3.0,   4.1, -9.0]
 
-# Velocity
+#initialiserer hastighet [x, y, z]
 inital_velocity_1 =  [0.5, 0.99, 0]
 inital_velocity_2 =  [-0.2, -0.7, 0.0]
-inital_velocity_3 =  [0.0, 0.0, -0.1]
+inital_velocity_3 =  [23.0, 0.0, -0.1]
 
+# henter posisjonene og hastighet og setter dem inn i en 1 dimensjonal array, bruker .ravel for å forsikre at den er 1 dimensjonal
 initial_conditions = np.array([
     inital_position_1, inital_position_2, inital_position_3,
     inital_velocity_1, inital_velocity_2, inital_velocity_3
@@ -28,23 +29,39 @@ initial_conditions = np.array([
 
 #calculating the positions of the planets with dimentionless formula for python
 def system_odes(t, S, m1, m2, m3):
+
+    #henter posisjonen av objektene fra S. p1, p2, p3 har alle x, y, z koordinater. så f.eks S[0:3] er posisjonen til planet1 (p1 = [x1, y1, z1])
     p1, p2, p3 = S[0:3], S[3:6], S[6:9]
+
+    #s[9:12] hastighet til planet1 (dp1_dt = [Vx1, Vy1, Vz1])
     dp1_dt, dp2_dt, dp3_dt = S[9:12], S[12:15], S[15:18]
 
+    
+    #f1, f2, f3 er hastigheten til dp1_dt, dp2_dt, dp3_dt
     f1, f2, f3 = dp1_dt, dp2_dt, dp3_dt
 
+    
+    #finner akselerasjonen til planetene
     df1_dt = m3*(p3 - p1)/np.linalg.norm(p3 - p1)**3 + m2*(p2 - p1)/np.linalg.norm(p2 - p1)**3
     df2_dt = m3*(p3 - p2)/np.linalg.norm(p3 - p2)**3 + m1*(p1 - p2)/np.linalg.norm(p1 - p2)**3
     df3_dt = m1*(p1 - p3)/np.linalg.norm(p1 - p3)**3 + m2*(p2 - p3)/np.linalg.norm(p2 - p3)**3
 
+
+    #gjør til en 1D array for å gjøre det lettere for ODE solver
     return np.array([f1, f2, f3, df1_dt, df2_dt, df3_dt]).ravel()
 
 
 
+#definerer time start og time end
 time_s, time_e = 0, 50
+
+#definerer hvor mange tids-punkter det skal være mellom time star og time end
 t_points = np.linspace(time_s, time_e, 1000)
 
+#henter current unix time
 t1 = time.time()
+
+#bruker solve_ivp funksjon og passerer dataen vår. den vil spytte ut en tids array først og så en y array som essensielt er løsningene våre. 
 solution = solve_ivp(
     fun=system_odes,
     t_span=(time_s, time_e),
@@ -52,11 +69,16 @@ solution = solve_ivp(
     t_eval=t_points,
     args=(m1, m2, m3)
 )
+print("this is the solution", solution)
+#henter unix time igjen
 t2 = time.time()
+#finner hvor lang tid det tok for å løse
 print(f"Solved in: {t2-t1:.3f} [s]")
 
-
+#henter tidsarrayen fra solution
 t_sol = solution.t
+
+#henter planet n sin x, y, z verdi fra solution's y index
 p1x_sol = solution.y[0]
 p1y_sol = solution.y[1]
 p1z_sol = solution.y[2]
