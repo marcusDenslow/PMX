@@ -95,10 +95,12 @@ p3z_sol = solution.y[8]
 
 fig, ax = plt.subplots(subplot_kw={"projection":"3d"})
 
+#tegner den tynne linjen etter posisjonen
 planet1_plt, = ax.plot(p1x_sol, p1y_sol, p1z_sol, 'green', label='Planet 1', linewidth=1)
 planet2_plt, = ax.plot(p2x_sol, p2y_sol, p2z_sol, 'red', label='Planet 2', linewidth=1)
 planet3_plt, = ax.plot(p3x_sol, p3y_sol, p3z_sol, 'blue',label='Planet 3', linewidth=1)
 
+#tegner en dot på den siste posisjonen
 planet1_dot, = ax.plot([p1x_sol[-1]], [p1y_sol[-1]], [p1z_sol[-1]], 'o', color='green', markersize=6)
 planet2_dot, = ax.plot([p2x_sol[-1]], [p2y_sol[-1]], [p2z_sol[-1]], 'o', color='red', markersize=6)
 planet3_dot, = ax.plot([p3x_sol[-1]], [p3y_sol[-1]], [p3z_sol[-1]], 'o', color='blue', markersize=6)
@@ -117,9 +119,12 @@ plt.legend()
 
 
 def update(frame):
+
+    #plotter de 300 siste framesene
     lower_lim = max(0, frame - 300)
     print(f"Progress: {(frame+1)/len(t_points):.1%} | 100.0 %", end='\r')
 
+    #definerer x,y,z sine verdier og lagres i en array fra lower lim til current frame
     x_current_1 = p1x_sol[lower_lim:frame+1]
     y_current_1 = p1y_sol[lower_lim:frame+1]
     z_current_1 = p1z_sol[lower_lim:frame+1]
