@@ -11,7 +11,7 @@ m3 = 1.0
 
 #initialiserer posisjoner [x, y, z]
 inital_position_1 =  [10.5,  25.0,  0.0]
-inital_position_2 =  [0.2,  3.0,  2.0]-
+inital_position_2 =  [0.2,  3.0,  2.0]
 inital_position_3 =  [-3.0,   4.1, -9.0]
 
 #initialiserer hastighet [x, y, z]
