@@ -4,6 +4,7 @@ from scipy.integrate import solve_ivp
 from matplotlib.animation import FuncAnimation
 import time
 
+print("hello world")
 #mass of the different planets
 m1 = 1.0
 m2 = 1.0
