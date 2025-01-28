@@ -4,7 +4,7 @@ from scipy.integrate import solve_ivp
 from matplotlib.animation import FuncAnimation
 import time
 
-#mass of the different planets
+#massen til de forskjellige planetene
 m1 = 1.0
 m2 = 1.0
 m3 = 1.0
@@ -14,7 +14,7 @@ inital_position_1 =  [1.0,  0.0,  1.0]
 inital_position_2 =  [1.0,  1.0,  0.0]
 inital_position_3 =  [0.0,   1.0, 1.0]
 
-# Velocity
+# Initialiserer hastigheter [x, y, z]
 inital_velocity_1 =  [0.0, 0.0, -1.0]
 inital_velocity_2 =  [0.0, 0.0, 1.0]
 inital_velocity_3 =  [0.0, 0.0, -0.6]
@@ -27,7 +27,7 @@ initial_conditions = np.array([
 
 
 
-#calculating the positions of the planets with dimentionless formula for python
+#kalkulerer posisjonene av planete med dimensjonsløs formel for python
 def system_odes(t, S, m1, m2, m3):
 
     #henter posisjonen av objektene fra S. p1, p2, p3 har alle x, y, z koordinater. så f.eks S[0:3] er posisjonen til planet1 (p1 = [x1, y1, z1])
@@ -55,7 +55,7 @@ def system_odes(t, S, m1, m2, m3):
 #definerer time start og time end
 time_s, time_e = 0, 50
 
-#definerer hvor mange tids-punkter det skal være mellom time star og time end
+#definerer hvor mange tids-punkter det skal være mellom time start og time end
 t_points = np.linspace(time_s, time_e, 1000)
 
 #henter current unix time
