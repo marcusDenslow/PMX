@@ -10,14 +10,14 @@ m2 = 1.0
 m3 = 1.0
 
 #initialiserer posisjoner [x, y, z]
-inital_position_1 =  [10.5,  25.0,  0.0]
-inital_position_2 =  [0.2,  3.0,  2.0]
-inital_position_3 =  [-3.0,   4.1, -9.0]
+inital_position_1 =  [1.0,  0.0,  1.0]
+inital_position_2 =  [1.0,  1.0,  0.0]
+inital_position_3 =  [0.0,   1.0, 1.0]
 
-#initialiserer hastighet [x, y, z]
-inital_velocity_1 =  [0.5, 0.99, 0]
-inital_velocity_2 =  [-0.2, -0.7, 0.0]
-inital_velocity_3 =  [23.0, 0.0, -0.1]
+# Velocity
+inital_velocity_1 =  [0.0, 0.0, -1.0]
+inital_velocity_2 =  [0.0, 0.0, 1.0]
+inital_velocity_3 =  [0.0, 0.0, -0.6]
 
 # henter posisjonene og hastighet og setter dem inn i en 1 dimensjonal array, bruker .ravel for å forsikre at den er 1 dimensjonal
 initial_conditions = np.array([
