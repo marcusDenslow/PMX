@@ -120,7 +120,7 @@ plt.legend()
 
 def update(frame):
 
-    #plotter de 300 siste framesene
+    #plotter de 300 siste punktene
     lower_lim = max(0, frame - 300)
     print(f"Progress: {(frame+1)/len(t_points):.1%} | 100.0 %", end='\r')
 
