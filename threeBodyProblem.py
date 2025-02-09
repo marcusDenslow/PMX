@@ -162,5 +162,5 @@ def update(frame):
 
     return planet1_plt, planet1_dot, planet2_plt, planet2_dot, planet3_plt, planet3_dot
 
-animation = FuncAnimation(fig, update, frames=range(0, len(t_points), 2), interval=10, blit=True)
+animation = FuncAnimation(fig, update, frames=range(0, len(t_points), 2), interval=8, blit=True)
 plt.show()
