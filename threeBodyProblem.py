@@ -52,6 +52,8 @@ def system_odes(t, S, m1, m2, m3):
 
 
 
+
+
 #definerer time start og time end
 time_s, time_e = 0, 75
 
