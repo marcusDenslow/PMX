@@ -53,10 +53,10 @@ def system_odes(t, S, m1, m2, m3):
 
 
 #definerer time start og time end
-time_s, time_e = 0, 100
+time_s, time_e = 0, 75
 
 #definerer hvor mange tids-punkter det skal være mellom time start og time end
-t_points = np.linspace(time_s, time_e, 2000)
+t_points = np.linspace(time_s, time_e, 1000)
 
 #henter current unix time
 t1 = time.time()
