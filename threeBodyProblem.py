@@ -4,26 +4,23 @@ from scipy.integrate import solve_ivp
 from matplotlib.animation import FuncAnimation
 import time
 
-#massen til de forskjellige planetene
+#massen til de forskjellige planetene,
 m1 = 1.0
 m2 = 1.0
 m3 = 1.0
 
 #initialiserer posisjoner [x, y, z]
-inital_position_1 =  [1.0,  0.0,  1.0]
-inital_position_2 =  [1.0,  1.0,  0.0]
-inital_position_3 =  [0.0,   1.0, 1.0]
-
+inital_position_1 =  [1.0, 0.0,  1.0]
+inital_position_2 =  [1.0, 1.0,  0.0]
+inital_position_3 =  [0.0, 1.0, 1.0]
 # Initialiserer hastigheter [x, y, z]
 inital_velocity_1 =  [0.0, 0.0, -1.0]
 inital_velocity_2 =  [0.0, 0.0, 1.0]
 inital_velocity_3 =  [0.0, 0.0, -0.6]
-
 # henter posisjonene og hastighet og setter dem inn i en 1 dimensjonal array, bruker .ravel for å forsikre at den er 1 dimensjonal
 initial_conditions = np.array([
     inital_position_1, inital_position_2, inital_position_3,
-    inital_velocity_1, inital_velocity_2, inital_velocity_3
-]).ravel()
+    inital_velocity_1, inital_velocity_2, inital_velocity_3]).ravel()
 
 
 
@@ -40,10 +37,11 @@ def system_odes(t, S, m1, m2, m3):
     #f1, f2, f3 er hastigheten til dp1_dt, dp2_dt, dp3_dt
     f1, f2, f3 = dp1_dt, dp2_dt, dp3_dt
 
+
     
     #finner akselerasjonen til planetene
     df1_dt = m3*(p3 - p1)/np.linalg.norm(p3 - p1)**3 + m2*(p2 - p1)/np.linalg.norm(p2 - p1)**3
-    df2_dt = m3*(p3 - p2)/np.linalg.norm(p3 - p2)**3 + m1*(p1 - p2)/np.linalg.norm(p1 - p2)**3
+    df2_dt = m3*(p3 - p2)/np.linalg.norm(p3 - p2)**3 + m1*(p1 - p2)/np.linalg.norm(p1 - p2)**3 
     df3_dt = m1*(p1 - p3)/np.linalg.norm(p1 - p3)**3 + m2*(p2 - p3)/np.linalg.norm(p2 - p3)**3
 
 
@@ -93,6 +91,9 @@ p3x_sol = solution.y[6]
 p3y_sol = solution.y[7]
 p3z_sol = solution.y[8]
 
+
+
+
 # ------------------------------------------------------------------- #
 
 fig, ax = plt.subplots(subplot_kw={"projection":"3d"})
@@ -138,6 +139,7 @@ def update(frame):
     x_current_3 = p3x_sol[lower_lim:frame+1]
     y_current_3 = p3y_sol[lower_lim:frame+1]
     z_current_3 = p3z_sol[lower_lim:frame+1]
+    
 
     planet1_plt.set_data(x_current_1, y_current_1)
     planet1_plt.set_3d_properties(z_current_1)
