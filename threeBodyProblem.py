@@ -4,7 +4,7 @@ from scipy.integrate import solve_ivp
 from matplotlib.animation import FuncAnimation
 import time
 
-#massen til de forskjellige planetene
+#massen til de forskjellige planetene,
 m1 = 1.0
 m2 = 1.0
 m3 = 1.0
@@ -12,16 +12,23 @@ m4 = 1.0
 m5 = 1.0
 
 #initialiserer posisjoner [x, y, z]
+<<<<<<< HEAD
 inital_position_1 =  [1.0,  0.0,  1.0]
 inital_position_2 =  [1.0,  1.0,  0.0]
 inital_position_3 =  [0.0,   1.0, 1.0]
 inital_position_4 =  [1.0,   1.0, 1.0]
 inital_position_5 =  [0.0,  0.0,  1.0]
 
+=======
+inital_position_1 =  [1.0, 0.0,  1.0]
+inital_position_2 =  [1.0, 1.0,  0.0]
+inital_position_3 =  [0.0, 1.0, 1.0]
+>>>>>>> 9f0a758bf96ca48df4e475c3634ef47c6e08c389
 # Initialiserer hastigheter [x, y, z]
 inital_velocity_1 =  [0.0, 0.0, -1.0]
 inital_velocity_2 =  [0.0, 0.0, 1.0]
 inital_velocity_3 =  [0.0, 0.0, -0.6]
+<<<<<<< HEAD
 inital_velocity_4 =  [0.0, 0.0, -0.9]
 inital_velocity_5 =  [0.0, 0.0, -0.2]
 
@@ -31,6 +38,12 @@ initial_conditions = np.array([
     inital_position_1, inital_position_2, inital_position_3, inital_position_4, inital_position_5,
     inital_velocity_1, inital_velocity_2, inital_velocity_3, inital_velocity_4, inital_velocity_5
 ]).ravel()
+=======
+# henter posisjonene og hastighet og setter dem inn i en 1 dimensjonal array, bruker .ravel for å forsikre at den er 1 dimensjonal
+initial_conditions = np.array([
+    inital_position_1, inital_position_2, inital_position_3,
+    inital_velocity_1, inital_velocity_2, inital_velocity_3]).ravel()
+>>>>>>> 9f0a758bf96ca48df4e475c3634ef47c6e08c389
 
 
 
@@ -47,13 +60,20 @@ def system_odes(t, S, m1, m2, m3, m4, m5):
     #f1, f2, f3 er hastigheten til dp1_dt, dp2_dt, dp3_dt, this is a test
     f1, f2, f3, f4, f5 = dp1_dt, dp2_dt, dp3_dt, dp4_dt, dp5_dt
 
+
     
     #finner akselerasjonen til planetene
+<<<<<<< HEAD
     df1_dt = m3*(p3 - p1)/np.linalg.norm(p3 - p1)**3 + m2*(p2 - p1)/np.linalg.norm(p2 - p1)**3 + m4*(p4 - p1)/np.linalg.norm(p4 - p1)**3 + m5*(p5 - p1)/np.linalg.norm(p5 - p1)**3
     df2_dt = m3*(p3 - p2)/np.linalg.norm(p3 - p2)**3 + m1*(p1 - p2)/np.linalg.norm(p1 - p2)**3 + m4*(p4 - p2)/np.linalg.norm(p4 - p2)**3 + m5*(p5 - p2)/np.linalg.norm(p5 - p2)**3
     df3_dt = m1*(p1 - p3)/np.linalg.norm(p1 - p3)**3 + m2*(p2 - p3)/np.linalg.norm(p2 - p3)**3 + m4*(p4 - p3)/np.linalg.norm(p4 - p3)**3 + m5*(p5 - p3)/np.linalg.norm(p5 - p3)**3
     df4_dt = m1*(p1 - p4)/np.linalg.norm(p1 - p4)**3 + m2*(p2 - p4)/np.linalg.norm(p2 - p4)**3 + m3*(p3 - p4)/np.linalg.norm(p3 - p4)**3 + m5*(p5 - p4)/np.linalg.norm(p5 - p4)**3
     df5_dt = m5*(p1 - p5)/np.linalg.norm(p1 - p5)**3 + m2*(p2 - p5)/np.linalg.norm(p2 - p5)**3 + m3*(p3 - p5)/np.linalg.norm(p3 - p5)**3 + m4*(p4 - p5)/np.linalg.norm(p4 - p5)**3
+=======
+    df1_dt = m3*(p3 - p1)/np.linalg.norm(p3 - p1)**3 + m2*(p2 - p1)/np.linalg.norm(p2 - p1)**3
+    df2_dt = m3*(p3 - p2)/np.linalg.norm(p3 - p2)**3 + m1*(p1 - p2)/np.linalg.norm(p1 - p2)**3 
+    df3_dt = m1*(p1 - p3)/np.linalg.norm(p1 - p3)**3 + m2*(p2 - p3)/np.linalg.norm(p2 - p3)**3
+>>>>>>> 9f0a758bf96ca48df4e475c3634ef47c6e08c389
 
 
     #gjør til en 1D array for å gjøre det lettere for ODE solver
@@ -102,6 +122,7 @@ p3x_sol = solution.y[6]
 p3y_sol = solution.y[7]
 p3z_sol = solution.y[8]
 
+<<<<<<< HEAD
 p4x_sol = solution.y[9]
 p4y_sol = solution.y[10]
 p4z_sol = solution.y[11]
@@ -109,6 +130,8 @@ p4z_sol = solution.y[11]
 p5x_sol = solution.y[12]
 p5y_sol = solution.y[13]
 p5z_sol = solution.y[14]
+=======
+>>>>>>> 9f0a758bf96ca48df4e475c3634ef47c6e08c389
 
 
 
@@ -161,6 +184,7 @@ def update(frame):
     x_current_3 = p3x_sol[lower_lim:frame+1]
     y_current_3 = p3y_sol[lower_lim:frame+1]
     z_current_3 = p3z_sol[lower_lim:frame+1]
+    
 
     x_current_4 = p4x_sol[lower_lim:frame+1]
     y_current_4 = p4y_sol[lower_lim:frame+1]
