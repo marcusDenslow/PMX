@@ -28,11 +28,6 @@ initial_conditions = np.array([
     inital_velocity_1, inital_velocity_2, inital_velocity_3
 ]).ravel()
 
-# henter posisjonene og hastighet og setter dem inn i en 1 dimensjonal array, bruker .ravel for å forsikre at den er 1 dimensjonal
-initial_conditions = np.array([
-    inital_position_1, inital_position_2, inital_position_3,
-    inital_velocity_1, inital_velocity_2, inital_velocity_3]).ravel()
-
 
 
 #kalkulerer posisjonene av planete med dimensjonsløs formel for python
