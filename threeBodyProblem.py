@@ -41,7 +41,7 @@ def system_odes(t, S, m1, m2, m3):
 
     
     #f1, f2, f3 er hastigheten til dp1_dt, dp2_dt, dp3_dt, this is a test
-    f1, f2, f3, f4, f5 = dp1_dt, dp2_dt, dp3_dt
+    f1, f2, f3 = dp1_dt, dp2_dt, dp3_dt
 
 
     
@@ -52,7 +52,7 @@ def system_odes(t, S, m1, m2, m3):
 
 
     #gjør til en 1D array for å gjøre det lettere for ODE solver
-    return np.array([f1, f2, f3, f4, f5, df1_dt, df2_dt, df3_dt]).ravel()
+    return np.array([f1, f2, f3, df1_dt, df2_dt, df3_dt]).ravel()
 
 
 
