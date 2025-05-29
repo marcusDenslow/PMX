@@ -219,16 +219,23 @@ def main():
         name='Planet 3'
     ))
 
+    system.add_planet(Planet(
+        mass=1.0,
+        initial_position=[-3.0, 1.0, 1.0],
+        initial_velocity=[0.0, 0.0, -0.6],
+        color='yellow',
+        name='Planet 4'
+    ))
+
+
+
+
     
     # Run simulation
     system.simulate((0, 75), n_points=5000)
     
     # Visualize results with your custom ranges
-    system.visualize(
-        x_range=(-2, 4),   # x from -1.0 to 1.5
-        y_range=(-10, 8),       # y from -6 to 4
-        z_range=(-20, 10)       # z from -15 to 1
-    )
+    system.visualize()
 
 if __name__ == "__main__":
     main()
